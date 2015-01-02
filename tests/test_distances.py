@@ -17,3 +17,7 @@ class TestDistances(unittest.TestCase):
         self.assertEqual(euclidean_distance(self.point_3, self.point_4), 
                         hypot(self.point_3[0] - self.point_4[0], 
                                 self.point_3[1] - self.point_4[1]))
+    
+    def test_jaccard_distance(self):
+        self.assertEqual(jaccard_distance(self.point_1, self.point_2), 0)
+        self.assertEqual(jaccard_distance(self.point_3, self.point_4), 1/3)

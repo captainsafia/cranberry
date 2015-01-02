@@ -12,5 +12,7 @@ def hamming_distance(point_x, point_y):
     pass
 
 def jaccard_distance(point_x, point_y):
-    pass
+    intersect = len(set(point_x) & set(point_y))
+    union = len(set(point_x) | set(point_y))
+    return intersect / union
 
