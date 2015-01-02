@@ -21,3 +21,7 @@ class TestDistances(unittest.TestCase):
     def test_jaccard_distance(self):
         self.assertEqual(jaccard_distance(self.point_1, self.point_2), 0)
         self.assertEqual(jaccard_distance(self.point_3, self.point_4), 1/3)
+
+    def test_hamming_distance(self):
+        self.assertEqual(hamming_distance(self.point_1, self.point_2), 10)
+        self.assertEqual(hamming_distance(self.point_3, self.point_4), 10)
