@@ -18,7 +18,7 @@ class OPTICS():
 		Keyword arguments: 
 
 		point -- the point whose neighbors to find
-		epsilon -- the 
+		epsilon -- the limit of distance value considered approximate
 		data -- the data set that clustering will be applied on
 		"""
 		neighbors = []
@@ -61,6 +61,16 @@ class OPTICS():
 			self.distance(point_x, point_y))
 
 	def update(self, queue, neighbors, point, epsilon, min_samples):
+        """
+        Updated queue if point with smaller distance has been found.
+
+        Keyword arguments:
+        queue -- the queue to be updated
+        neighbors -- the neighbors to calculate the distance of 
+        point -- the point distance is being compared to
+        epsilon -- the limit of distance value considered approximate
+        min_samples -- the minimum number of points in a cluster 
+        """
 		distance = self.core_distance(epsilon, min_samples, point)
 		for neighbor in neighbors:
 			if neighbor not in self.processed:
@@ -73,6 +83,12 @@ class OPTICS():
 					queue.prioritize((neighbor, new_distance))
 
 	def fit(self, data):
+        """
+        Run the main optics clustering algorithm
+
+        Keyword arguments:
+        data -- a list of tuples containing points to cluster
+        """
 		for x, y in data:
 			self.reachability[(x,y)] = None
 			unprocessed = list(set(data) - set(self.processed))
